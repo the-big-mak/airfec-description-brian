@@ -1,2 +1,5 @@
 ##NODE_MODULES##
 node_modules
+
+##Mysql_Database_Info##
+./server/db.js
