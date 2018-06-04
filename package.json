@@ -1,0 +1,33 @@
+{
+  "name": "airfec-description-brian",
+  "description": "Description module for mock airbnb project",
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=6.13.0"
+  },
+  "scripts": {},
+  "dependencies": {
+    "mysql": "^2.15.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.8.2"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-big-mak/airfec-description-brian.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/the-big-mak/airfec-description-brian/issues"
+  },
+  "homepage": "https://github.com/the-big-mak/airfec-description-brian#readme"
+}
