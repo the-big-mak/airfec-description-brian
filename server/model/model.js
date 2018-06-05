@@ -21,7 +21,7 @@ module.exports = {
       if (err) {
         callback(err);
       } else {
-        callback(result);
+        callback(null, result);
       }
     });
   },
