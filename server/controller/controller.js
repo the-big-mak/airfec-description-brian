@@ -8,8 +8,6 @@ const PORT = 3000;
 
 
 app.use(bodyParser.json());
-app.listen(PORT);
-console.log('Listening to ', PORT);
 
 app.use(express.static(path.join(__dirname, '../client')));
 
@@ -21,7 +19,10 @@ app.get('/description', (req, res) => {
       res.status(404).send(err);
     }
 
-    res.status(200).send(JSON.parse(result.body));
+    res.status(200).json(result.body);
   });
 });
 
+app.listen(PORT, () => {
+  console.log('Listening to ', PORT);
+});
