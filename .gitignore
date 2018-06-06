@@ -3,3 +3,9 @@ node_modules
 
 ##Mysql_Database_Info##
 ./server/db/db.js
+
+##.babelrc.js##
+.babelrc.js
+
+##.eslintrc.js##
+.eslintrc.js
