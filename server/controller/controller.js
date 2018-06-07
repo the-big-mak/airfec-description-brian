@@ -9,7 +9,7 @@ const PORT = 3000;
 
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(express.static(path.join(__dirname, '../../client')));
 
 app.get('/description', (req, res) => {
   const params = req.query;
