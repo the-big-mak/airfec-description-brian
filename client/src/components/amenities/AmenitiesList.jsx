@@ -9,7 +9,7 @@ const AmenitiesList = (props) => {
       </div>
       <div>
         {props.amenities.map((amenity, index) => (
-          <Amenity key={index} amenity={amenity} />
+          <Amenity id={index} amenity={amenity} />
         ))}
       </div>
     </div>

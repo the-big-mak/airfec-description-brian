@@ -7,7 +7,7 @@ class DescriptionEntry extends React.Component {
     this.state = {
       type: '',
       description: '',
-      id: this.props.id
+      id: this.props.id,
     };
   }
 
