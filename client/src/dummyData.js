@@ -8,17 +8,17 @@ const dummyData = [{
     { interactions: 'Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.'},
     { notes: 'Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.'},
   ],
-  guests: {
-    guests: 2,
-    bedrooms: 22,
-    beds: 30,
-    bath: 13,
-  },
-  highlights: {
-    sparklingClean: 85,
-    checkinExp: 54,
-    greatLocation: 12,
-  },
+  room: [
+    { guests: 2 },
+    { bedrooms: 22 },
+    { beds: 30 },
+    { bath: 13 },
+  ],
+  highlights: [
+    { sparklingClean: 85 },
+    { checkinExp: 54 },
+    { greatLocation: 12 },
+  ],
   amenities: ['Wifi', 'Air Conditioning', 'Elevator'],
   houseRules: ['Dangerous animals on property', 'Weapons on property'],
 }];
