@@ -15,17 +15,25 @@ class DescriptionEntry extends React.Component {
     const desc = this.props.description;
 
     if (this.state.id === 0) {
-      this.setState({ type: 'The Space' });
-      this.setState({ description: desc.space });
+      this.setState({
+        type: 'The Space',
+        description: desc.space,
+      });
     } else if (this.state.id === 1) {
-      this.setState({ type: 'Guest Access' });
-      this.setState({ description: desc.access });
+      this.setState({
+        type: 'Guest Access',
+        description: desc.access,
+      });
     } else if (this.state.id === 2) {
-      this.setState({ type: 'Guest Interactions' });
-      this.setState({ description: desc.interactions });
+      this.setState({
+        type: 'Guest Interactions',
+        description: desc.interactions,
+      });
     } else if (this.state.id === 3) {
-      this.setState({ type: 'Notes' });
-      this.setState({ description: desc.notes });
+      this.setState({
+        type: 'Notes',
+        description: desc.notes,
+      });
     }
   }
 

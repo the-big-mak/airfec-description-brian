@@ -1,14 +1,12 @@
 import React from 'react';
-import Helpful from './Helpful.jsx';
-import NotHelpful from './NotHelpful.jsx';
-import styled from 'styled-components';
+import DisplayHelpfulButtons from './DisplayHelpfulButtons.jsx';
 
 class ButtonList extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      clicked: false,
+      anyButtonClicked: false,
       helpful: false,
       notHelpful: false,
     };
@@ -19,14 +17,14 @@ class ButtonList extends React.Component {
 
   handleHelpfulClicked() {
     this.setState({
-      clicked: true,
+      anyButtonClicked: true,
       helpful: true,
     });
   }
 
   handleNotHelpfulClicked() {
     this.setState({
-      clicked: true,
+      anyButtonClicked: true,
       notHelpful: true,
     });
   }
@@ -34,27 +32,18 @@ class ButtonList extends React.Component {
   // create handleFeedback for conditional rendering.
 
   render() {
+    const buttonClicked = this.state.anyButtonClicked;
+
     return (
       <div>
-        <OuterWrapper>
-        <HelpfulWrapper>
-            <Helpful handleHelpfulClicked={this.handleHelpfulClicked}/>
-              &middot;
-            <NotHelpful handleNotHelpfulClicked={this.handleNotHelpfulClicked}/>
-        </HelpfulWrapper>
-        </OuterWrapper>
+        {buttonClicked ? (
+          'Thank you for your feedback'
+        ) : (
+          <DisplayHelpfulButtons handleHelpfulClicked={this.handleHelpfulClicked} handleNotHelpfulClicked={this.handleNotHelpfulClicked}/>
+        )}
       </div>
     );
   }
 }
-
-const HelpfulWrapper = styled.div`
-  display: 'flex';
-  flex-direction: 'row';
-`;
-
-const OuterWrapper = styled.div`
-  display: block;
-`;
 
 export default ButtonList;

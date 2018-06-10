@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, '../../client')));
 
-app.get('/description', (req, res) => {
+app.get('/descriptions', (req, res) => {
   const params = req.query;
 
   model.get(params, (err, result) => {
@@ -19,7 +19,8 @@ app.get('/description', (req, res) => {
       res.status(404).send(err);
     }
 
-    res.status(200).json(result.body);
+    console.log(result);
+    res.status(200).json(result);
   });
 });
 

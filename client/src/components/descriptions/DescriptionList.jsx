@@ -3,9 +3,7 @@ import DescriptionEntry from './DescriptionEntry.jsx';
 import MainDescription from './MainDescription.jsx';
 import styled from 'styled-components';
 
-// change into class so you can control button click on list view to show more of the content as conditional rendering.
-
-const Test = styled.button`
+const ReadMoreButton = styled.button`
   background-color: Transparent;
   border: none;
   cursor:pointer;
@@ -13,6 +11,15 @@ const Test = styled.button`
   color: rgb(0, 132, 137);
   font-weight: 600;
   font-stretch: 100%
+`;
+
+const BottomBorderLine = styled.div`
+  border-bottom-style: solid;
+  border-bottom-color: rgb(219, 219, 219);
+  border-bottom-width: .994px;
+  margin: 24px 0;
+  box-sizing: border-box;
+  display: block;
 `;
 
 class DescriptionList extends React.Component {
@@ -57,7 +64,6 @@ class DescriptionList extends React.Component {
   handleNoContent() {
     return (
       <div>
-        <span> </span>
       </div>
     )
   }
@@ -78,10 +84,14 @@ class DescriptionList extends React.Component {
            )}
         </div>
         <div>
-          <Test onClick={() => this.handleReadMoreClicked()}>
+          <ReadMoreButton onClick={() => this.handleReadMoreClicked()}>
             Read more about the space
-          </Test>
+          </ReadMoreButton>
         </div>
+        <BottomBorderLine>
+          <div>
+          </div>
+        </BottomBorderLine>
       </div>
     );
   }

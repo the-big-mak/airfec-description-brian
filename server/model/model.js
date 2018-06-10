@@ -3,7 +3,7 @@ const db = require('../db/db.js');
 module.exports = {
   get: (params, callback) => {
     const parameter = [params.id];
-    const q = `SELECT d.descriptions, d.space, d.access, d.interactions, d.notes, d.reg_number, d.property_type, d.guests, d.bedrooms, d.bath, d.sparkling_clean, d.checkin_exp, d.great_location, b.amenities, c.house_rules 
+    const q = `SELECT DISTINCT d.descriptions, d.space, d.access, d.interactions, d.notes, d.reg_number, d.property_type, d.guests, d.bedrooms, d.bath, d.sparkling_clean, d.checkin_exp, d.great_location, b.amenities, c.house_rules 
       FROM descriptions d 
         LEFT JOIN (SELECT da.description_id, a.amenities 
         FROM description_to_amenities da 
