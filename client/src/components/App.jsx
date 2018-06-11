@@ -1,72 +1,111 @@
 import React from 'react';
-import Title from './title/Title.jsx';
-import Guests from './guests/Guests.jsx';
-import Highlights from './highlights/Highlights.jsx';
+import axios from 'axios';
+import Summary from './summary/Summary.jsx';
+import HighlightsList from './highlights/HighlightsList.jsx';
 import DescriptionList from './descriptions/DescriptionList.jsx';
 import AmenitiesList from './amenities/AmenitiesList.jsx';
 import HouseRulesList from './houseRules/HouseRulesList.jsx';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  text-size-adjust: 100%;
+  color: rgb(72, 72, 72);
+`;
+
+const TopBottomMargin = styled.div`
+  margin: 24px 0;
+`;
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
-    // How can I get all the information from data from the GET request?
     this.state = {
-      propertyType: window.dummyData[0].propertyType,
-      title: window.dummyData[0].title,
+      summary: window.dummyData[0].summary,
       descriptions: window.dummyData[0].descriptions,
-      guests: window.dummyData[0].guests,
       highlights: window.dummyData[0].highlights,
       amenities: window.dummyData[0].amenities,
       houseRules: window.dummyData[0].houseRules,
-      id: 1,
+      id: 99,
     };
   }
-
-  // componentDidMount() {
-  //   axios.get('/descriptions', {
-  //     params: {
-  //       id: this.state.id
-  //     }
-  //   }).then((response) => {
-  //       console.log('I got the data!!', response.data);
-  //   }).catch((error) => {
-  //     console.log('Something went wrong', error);
-  //   })
-  // }
 
   render() {
     return (
       <div>
-        <div>
+        <Wrapper>
           <div>
-            <div className="title">
-              <Title title={this.state.title} />
+            <div>
+              <div className="summary-list">
+                <Summary summary={this.state.summary} />
+              </div>
             </div>
           </div>
-          <div>
-            <div className="guests-list">
-              <Guests guests={this.state.guests} />
+          <div className="main-content">
+            <div className="highlights-list">
+              <HighlightsList highlightsList={this.state.highlights} />
+            </div>
+            <div className="descriptions-list">
+              <TopBottomMargin>
+                <DescriptionList descriptions={this.state.descriptions} />
+              </TopBottomMargin>
+            </div>
+            <div className="amenities-list">
+              <TopBottomMargin>
+                <AmenitiesList amenities={this.state.amenities} />
+              </TopBottomMargin>
+            </div>
+            <div className="house-rules-list">
+              <TopBottomMargin>
+                <HouseRulesList houseRulesList={this.state.houseRules} />
+              </TopBottomMargin>
             </div>
           </div>
-        </div>
-        <div className="main-content">
-          <div className="highlights-list">
-            <Highlights highlights={this.state.highlights} />
-          </div>
-          <div className="descriptions-list">
-            <DescriptionList descriptions={this.state.descriptions} />
-          </div>
-          <div className="amenities-list">
-            <AmenitiesList amenities={this.state.amenities} />
-          </div>
-          <div className="house-rules-list">
-            <HouseRulesList houseRulesList={this.state.houseRules} />
-          </div>
-        </div>
+        </Wrapper>
       </div>
     );
   }
 }
 
 export default App;
+
+// componentDidMount() {
+//   axios.all([
+//     axios.get('/descriptions', {
+//       params: {
+//         id: this.state.id,
+//       },
+//     }),
+//     axios.get('/summary', {
+//       params: {
+//         id: this.state.id,
+//       },
+//     }),
+//     axios.get('/highlights', {
+//       params: {
+//         id: this.state.id,
+//       },
+//     }),
+//     axios.get('/amenities', {
+//       params: {
+//         id: this.state.id,
+//       },
+//     }),
+//     axios.get('/rules', {
+//       params: {
+//         id: this.state.id,
+//       },
+//     }),
+//   ])
+//     .then(axios.spread((descriptionsList, summary, highlights, amenitiesList, houseRulesList) => {
+//       this.setState({
+//         descriptions: descriptionsList,
+//         amenities: amenitiesList.data,
+//         houseRules: houseRulesList.data,
+//       });
+//     }))
+//     .catch((error) => {
+//       console.log('Something went wrong', error);
+//     });
+// }
