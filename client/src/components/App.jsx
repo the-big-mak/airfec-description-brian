@@ -27,45 +27,25 @@ class App extends React.Component {
       highlights: window.dummyData[0].highlights,
       amenities: window.dummyData[0].amenities,
       houseRules: window.dummyData[0].houseRules,
-      id: 99,
+      id: 98,
     };
   }
 
 
   componentDidMount() {
-    axios.all([
-      axios.get('/descriptions', {
-        params: {
-          id: this.state.id,
-        },
-      }),
-      axios.get('/summary', {
-        params: {
-          id: this.state.id,
-        },
-      }),
-      axios.get('/highlights', {
-        params: {
-          id: this.state.id,
-        },
-      }),
-      axios.get('/amenities', {
-        params: {
-          id: this.state.id,
-        },
-      }),
-      axios.get('/rules', {
-        params: {
-          id: this.state.id,
-        },
-      }),
-    ])
-      .then(axios.spread((descriptionsList, summary, highlights, amenitiesList, houseRulesList) => {
-        console.log(descriptionsList);
+    axios.get('/description', {
+      params: {
+        id: this.state.id,
+      },
+    })
+      .then((result) => {
+        const data = result.data;
+
         this.setState({
-          amenities: amenitiesList.data,
+          summary: data[1],
+          amenities: data[3],
         });
-      }))
+      })
       .catch((error) => {
         console.log('Something went wrong', error);
       });

@@ -6,14 +6,14 @@ const dummyData = [{
     { interactions: 'Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.'},
     { notes: 'Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.'},
   ],
-  summary: [
-    { guests: 2 },
-    { bedrooms: 22 },
-    { beds: 30 },
-    { bath: 13 },
-    { propertyType: 'bed and breakfast' },
-    { title: 'Suspendisse potenti.' },
-  ],
+  summary: [{
+    guests: 2,
+    bedrooms: 22,
+    beds: 30,
+    bath: 13,
+    propertyType: 'bed and breakfast',
+    title: 'Suspendisse potenti.',
+  }],
   highlights: [
     { sparklingClean: 85 },
     { checkinExp: 54 },

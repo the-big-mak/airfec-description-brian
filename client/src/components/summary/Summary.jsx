@@ -3,54 +3,23 @@ import Room from './Room.jsx';
 import Title from './Title.jsx';
 import PropertyType from './PropertyType.jsx';
 
-class Summary extends React.Component {
-  constructor(props) {
-    super(props);
+const Summary = (props) => {
 
-    this.state = {
-      propertyType: '',
-      title: '',
-      roomList: [],
-    };
-  }
-
-  componentDidMount() {
-    let property = '';
-    let titleName = '';
-    let rooms = [];
-
-    this.props.summary.forEach((element) => {
-      if (element.propertyType) {
-        property = element.propertyType;
-      } else if (element.title) {
-        titleName = element.title;
-      } else {
-        rooms.push(element);
-      }
-    });
-
-    this.setState({
-      propertyType: property,
-      title: titleName,
-      roomList: rooms,
-    });
-  }
-
-  render() {
-    return (
+  const value = Object.values(props.summary[0]);
+console.log(value.slice(2));
+  return (
+    <div>
       <div>
-        <div>
-          <PropertyType propertyType={this.state.propertyType} />
-        </div>
-        <div>
-          <Title title={this.state.title} />
-        </div>
-        <div>
-          <Room roomList={this.state.roomList} />
-        </div>
+        <PropertyType propertyType={value[0]} />
       </div>
-    );
-  }
-}
+      <div>
+        <Title title={value[1]} />
+      </div>
+      <div>
+        <Room roomList={value.slice(2)} />
+      </div>
+    </div>
+  );
+};
 
 export default Summary;
