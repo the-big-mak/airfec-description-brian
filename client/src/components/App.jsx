@@ -31,6 +31,47 @@ class App extends React.Component {
     };
   }
 
+
+  componentDidMount() {
+    axios.all([
+      axios.get('/descriptions', {
+        params: {
+          id: this.state.id,
+        },
+      }),
+      axios.get('/summary', {
+        params: {
+          id: this.state.id,
+        },
+      }),
+      axios.get('/highlights', {
+        params: {
+          id: this.state.id,
+        },
+      }),
+      axios.get('/amenities', {
+        params: {
+          id: this.state.id,
+        },
+      }),
+      axios.get('/rules', {
+        params: {
+          id: this.state.id,
+        },
+      }),
+    ])
+      .then(axios.spread((descriptionsList, summary, highlights, amenitiesList, houseRulesList) => {
+        console.log(descriptionsList);
+        this.setState({
+          amenities: amenitiesList.data,
+        });
+      }))
+      .catch((error) => {
+        console.log('Something went wrong', error);
+      });
+  }
+
+
   render() {
     return (
       <div>
@@ -69,43 +110,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-// componentDidMount() {
-//   axios.all([
-//     axios.get('/descriptions', {
-//       params: {
-//         id: this.state.id,
-//       },
-//     }),
-//     axios.get('/summary', {
-//       params: {
-//         id: this.state.id,
-//       },
-//     }),
-//     axios.get('/highlights', {
-//       params: {
-//         id: this.state.id,
-//       },
-//     }),
-//     axios.get('/amenities', {
-//       params: {
-//         id: this.state.id,
-//       },
-//     }),
-//     axios.get('/rules', {
-//       params: {
-//         id: this.state.id,
-//       },
-//     }),
-//   ])
-//     .then(axios.spread((descriptionsList, summary, highlights, amenitiesList, houseRulesList) => {
-//       this.setState({
-//         descriptions: descriptionsList,
-//         amenities: amenitiesList.data,
-//         houseRules: houseRulesList.data,
-//       });
-//     }))
-//     .catch((error) => {
-//       console.log('Something went wrong', error);
-//     });
-// }
