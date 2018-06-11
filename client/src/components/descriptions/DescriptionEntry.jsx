@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 class DescriptionEntry extends React.Component {
   constructor(props) {
@@ -40,9 +41,11 @@ class DescriptionEntry extends React.Component {
   render() {
     return (
       <div className={`description-id: ${this.props.id}`}>
-        <div className="description-type">
-          <b>{this.state.type}</b>
-        </div>
+        <Wrapper>
+          <div className="description-type">
+            <b>{this.state.type}</b>
+          </div>
+        </Wrapper>
         <div className="description">
           {this.state.description}
         </div>
@@ -50,5 +53,9 @@ class DescriptionEntry extends React.Component {
     );
   }
 }
+
+const Wrapper = styled.h2` 
+  font-size: 16px; 
+`;
 
 export default DescriptionEntry;

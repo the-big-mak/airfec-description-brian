@@ -3,25 +3,6 @@ import DescriptionEntry from './DescriptionEntry.jsx';
 import MainDescription from './MainDescription.jsx';
 import styled from 'styled-components';
 
-const ReadMoreButton = styled.button`
-  background-color: Transparent;
-  border: none;
-  cursor:pointer;
-  font-size: 16px;
-  color: rgb(0, 132, 137);
-  font-weight: 600;
-  font-stretch: 100%
-`;
-
-const BottomBorderLine = styled.div`
-  border-bottom-style: solid;
-  border-bottom-color: rgb(219, 219, 219);
-  border-bottom-width: .994px;
-  margin: 24px 0;
-  box-sizing: border-box;
-  display: block;
-`;
-
 class DescriptionList extends React.Component {
   constructor(props) {
     super(props);
@@ -96,5 +77,26 @@ class DescriptionList extends React.Component {
     );
   }
 }
+
+
+const ReadMoreButton = styled.button`
+  background-color: Transparent;
+  border: none;
+  cursor:pointer;
+  font-size: 16px;
+  color: rgb(0, 132, 137);
+  font-weight: 600;
+  font-stretch: 100%
+  margin-left: 0;
+`;
+
+const BottomBorderLine = styled.div`
+  border-bottom-style: solid;
+  border-bottom-color: rgb(219, 219, 219);
+  border-bottom-width: .994px;
+  margin: 24px 0;
+  box-sizing: border-box;
+  display: block;
+`;
 
 export default DescriptionList;

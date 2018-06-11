@@ -29,8 +29,6 @@ class ButtonList extends React.Component {
     });
   }
 
-  // create handleFeedback for conditional rendering.
-
   render() {
     const buttonClicked = this.state.anyButtonClicked;
 
@@ -39,7 +37,10 @@ class ButtonList extends React.Component {
         {buttonClicked ? (
           'Thank you for your feedback'
         ) : (
-          <DisplayHelpfulButtons handleHelpfulClicked={this.handleHelpfulClicked} handleNotHelpfulClicked={this.handleNotHelpfulClicked}/>
+          <DisplayHelpfulButtons
+            handleHelpfulClicked={this.handleHelpfulClicked}
+            handleNotHelpfulClicked={this.handleNotHelpfulClicked}
+          />
         )}
       </div>
     );

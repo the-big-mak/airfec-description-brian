@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 const Room = props => (
   <div>
     <Wrapper>
-      {props.room.map((room, index) => (
+      {props.roomList.map((room, index) => (
         <RoomEntry room={room} id={index}/>
       ))}
     </Wrapper>

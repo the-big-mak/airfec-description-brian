@@ -1,6 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const NotHelpful = props => (
+  <HelpfulButton>
+    <span className="not-helpful" onClick={props.handleNotHelpfulClicked}>
+      Not Helpful
+    </span>
+  </HelpfulButton>
+);
 
 const HelpfulButton = styled.button`
   background-color: Transparent;
@@ -11,13 +18,5 @@ const HelpfulButton = styled.button`
   font-weight: 600;
   font-stretch: 100%
 `;
-
-const NotHelpful = props => (
-  <HelpfulButton>
-    <span className="not-helpful" onClick={props.handleNotHelpfulClicked}>
-      Not Helpful
-    </span>
-  </HelpfulButton>
-);
 
 export default NotHelpful;

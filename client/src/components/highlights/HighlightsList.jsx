@@ -2,6 +2,17 @@ import React from 'react';
 import HighlightEntry from './HighlightEntry.jsx';
 import styled from 'styled-components';
 
+const HighlightsList = props => (
+  <div>
+    <Container>
+      {props.highlightsList.map((highlight, index) => (
+          <HighlightEntry id={index} highlight={highlight} />
+        ))
+      }
+    </Container>
+  </div>
+);
+
 const Container = styled.div`
   border-style: solid;
   border-color: rgb(219, 219, 219);
@@ -13,16 +24,5 @@ const Container = styled.div`
   display: block;
   text-size-adjust: 100%;
 `;
-
-const HighlightsList = props => (
-  <div>
-    <Container>
-      {props.highlightsList.map((highlight, index) => (
-          <HighlightEntry id={index} highlight={highlight} />
-        ))
-      }
-    </Container>
-  </div>
-);
 
 export default HighlightsList;

@@ -1,6 +1,4 @@
 const dummyData = [{
-  propertyType: 'bed and breakfast',
-  title: 'Suspendisse potenti.',
   descriptions: [
     { descriptions: 'Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.'},
     { space: 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.'},
@@ -8,11 +6,13 @@ const dummyData = [{
     { interactions: 'Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.'},
     { notes: 'Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.'},
   ],
-  room: [
+  summary: [
     { guests: 2 },
     { bedrooms: 22 },
     { beds: 30 },
     { bath: 13 },
+    { propertyType: 'bed and breakfast' },
+    { title: 'Suspendisse potenti.' },
   ],
   highlights: [
     { sparklingClean: 85 },

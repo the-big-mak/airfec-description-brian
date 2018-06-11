@@ -7,6 +7,8 @@ class HouseRulesList extends React.Component {
   constructor(props) {
     super(props);
 
+    console.log(props);
+
     this.state = {
       displayedRules: [],
       hiddenRules: [],
@@ -14,7 +16,6 @@ class HouseRulesList extends React.Component {
 
     this.handleNoContent = this.handleNoContent.bind(this);
   }
-
 
   componentDidMount() {
     let mappedDisplayedRules = [];

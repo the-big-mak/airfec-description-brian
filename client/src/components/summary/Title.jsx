@@ -5,6 +5,8 @@ const Text = styled.h1`
   font-size: 32px;
   font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
   font-color: #484848;
+  margin: 5px;
+  margin-left: 0;
 `;
 
 const Title = props => (

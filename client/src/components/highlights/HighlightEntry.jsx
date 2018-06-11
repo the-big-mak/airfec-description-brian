@@ -2,19 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Helpful from './buttonList/ButtonList.jsx';
 
-const OuterWrapper = styled.div`
-  margin-bottom: 12px;
-`;
-
-const InnerWrapper = styled.div`
-  margin-bottom: 8px;
-  font-size: 16px;
-  letter-spacing: normal;
-  line-height: 22px;
-  text-size-adjust: 100%;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
-`;
-
 class HighlightEntry extends React.Component {
   constructor(props) {
     super(props);
@@ -62,5 +49,18 @@ class HighlightEntry extends React.Component {
     );
   }
 }
+
+const OuterWrapper = styled.div`
+  margin-bottom: 12px;
+`;
+
+const InnerWrapper = styled.div`
+  margin-bottom: 8px;
+  font-size: 16px;
+  letter-spacing: normal;
+  line-height: 22px;
+  text-size-adjust: 100%;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+`;
 
 export default HighlightEntry;

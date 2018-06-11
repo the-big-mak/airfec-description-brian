@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Title from './title/Title.jsx';
-import Room from './guests/Room.jsx';
+import Summary from './summary/Summary.jsx';
 import HighlightsList from './highlights/HighlightsList.jsx';
 import DescriptionList from './descriptions/DescriptionList.jsx';
 import AmenitiesList from './amenities/AmenitiesList.jsx';
@@ -22,42 +21,14 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    // How can I get all the information from data from the GET request?
     this.state = {
-      propertyType: window.dummyData[0].propertyType,
-      title: window.dummyData[0].title,
+      summary: window.dummyData[0].summary,
       descriptions: window.dummyData[0].descriptions,
-      room: window.dummyData[0].room,
       highlights: window.dummyData[0].highlights,
       amenities: window.dummyData[0].amenities,
       houseRules: window.dummyData[0].houseRules,
       id: 99,
     };
-  }
-
-  componentDidMount() {
-    axios.get('/descriptions', {
-      params: {
-        id: this.state.id,
-      },
-    }).then((response) => {
-      // let propertyType = '';
-      // let description = [];
-      // let guests = [];
-      // let amenities = [];
-      // let houseRules = [];
-
-      // response.data.forEach((el) => (
-      //   if (el.amenities) {
-      //     amenities.push(el.amenities);
-      //   } else if (el.houseRules) {
-      //     houseRules.push(el.houseRules);
-      //   } else if ((el.beds || el.bathrooms || el.guests || el.beds))
-      // ))
-      console.log(response);
-    }).catch((error) => {
-      console.log('Something went wrong', error);
-    });
   }
 
   render() {
@@ -66,13 +37,8 @@ class App extends React.Component {
         <Wrapper>
           <div>
             <div>
-              <div className="title">
-                <Title title={this.state.title} />
-              </div>
-            </div>
-            <div>
-              <div className="guests-list">
-                <Room room={this.state.room} />
+              <div className="summary-list">
+                <Summary summary={this.state.summary} />
               </div>
             </div>
           </div>
@@ -106,25 +72,40 @@ export default App;
 
 // componentDidMount() {
 //   axios.all([
-//     axios.get('/descriptions'),
-//     axios.get('/amenities'),
-//     axios.get('/rules'),
+//     axios.get('/descriptions', {
+//       params: {
+//         id: this.state.id,
+//       },
+//     }),
+//     axios.get('/summary', {
+//       params: {
+//         id: this.state.id,
+//       },
+//     }),
+//     axios.get('/highlights', {
+//       params: {
+//         id: this.state.id,
+//       },
+//     }),
+//     axios.get('/amenities', {
+//       params: {
+//         id: this.state.id,
+//       },
+//     }),
+//     axios.get('/rules', {
+//       params: {
+//         id: this.state.id,
+//       },
+//     }),
 //   ])
-//   .then(axios.spread((descriptions, amenities, rules) => {
-      
-    
+//     .then(axios.spread((descriptionsList, summary, highlights, amenitiesList, houseRulesList) => {
 //       this.setState({
-//         amenities: amenities.data,
-//         houseRules: rules.data,
+//         descriptions: descriptionsList,
+//         amenities: amenitiesList.data,
+//         houseRules: houseRulesList.data,
 //       });
 //     }))
-//   .catch(axios.spread((descriptionError, amenitiesError, rulesError) => {
-//     if (descriptionError) {
-//       throw descriptionError;
-//     } else if (amenitiesError) {
-//       throw amenitiesError;
-//     } else if (descriptionError) {
-//       throw amenitiesError;
-//     }
-//   }));
+//     .catch((error) => {
+//       console.log('Something went wrong', error);
+//     });
 // }
