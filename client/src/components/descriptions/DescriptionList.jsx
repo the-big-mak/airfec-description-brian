@@ -2,6 +2,7 @@ import React from 'react';
 import DescriptionEntry from './DescriptionEntry.jsx';
 import MainDescription from './MainDescription.jsx';
 import ReadMoreButton from '../styles/ReadMoreButton.jsx';
+import RenderNoContent from '../RenderNoContent.jsx';
 import styled from 'styled-components';
 
 const DescriptionList = (props) => {
@@ -36,13 +37,6 @@ const DescriptionList = (props) => {
     );
   };
 
-  const handleNoContent = () => {
-    return (
-      <div>
-      </div>
-    );
-  };
-
   return (
     <div>
       <div>
@@ -52,7 +46,7 @@ const DescriptionList = (props) => {
           { props.readMoreClicked ? (
             remainingMapped()
             ) : (
-            handleNoContent()
+            <RenderNoContent />
             )}
         </div>
       <div>
@@ -72,7 +66,7 @@ const BottomBorderLine = styled.div`
   border-bottom-style: solid;
   border-bottom-color: rgb(219, 219, 219);
   border-bottom-width: .994px;
-  margin: 24px 0;
+  margin-bottom: 24px;
   box-sizing: border-box;
   display: block;
 `;

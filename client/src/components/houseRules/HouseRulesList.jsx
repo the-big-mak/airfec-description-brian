@@ -1,6 +1,7 @@
 import React from 'react';
 import DisplayedRules from './DisplayedRules.jsx';
 import DisplayReadMoreButton from './DisplayReadMoreButton.jsx';
+import RenderNoContent from '../RenderNoContent.jsx';
 import styled from 'styled-components';
 
 const HouseRulesList = (props) => {
@@ -14,11 +15,6 @@ const HouseRulesList = (props) => {
       hiddenRules.push(element.houseRules);
     }
   });
-
-  const handleNoContent = () => (
-    <div>
-    </div>
-  );
 
   return (
     displayedRules.length === 0 ? (
@@ -39,7 +35,7 @@ const HouseRulesList = (props) => {
           {hiddenRules.length > 0 ? (
             <DisplayReadMoreButton hiddenRules={hiddenRules}/>
           ) : (
-            handleNoContent()
+            <RenderNoContent/>
           )}
         </div>
       </div>
