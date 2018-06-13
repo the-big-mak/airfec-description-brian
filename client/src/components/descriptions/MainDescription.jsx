@@ -2,7 +2,7 @@ import React from 'react';
 
 const MainDescription = props => (
   <div>
-    {props.main[0].descriptions}
+    {props.main}
   </div>
 );
 

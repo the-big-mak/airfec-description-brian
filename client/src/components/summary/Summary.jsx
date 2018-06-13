@@ -6,7 +6,6 @@ import PropertyType from './PropertyType.jsx';
 const Summary = (props) => {
 
   const value = Object.values(props.summary[0]);
-console.log(value.slice(2));
   return (
     <div>
       <div>

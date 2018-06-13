@@ -1,33 +1,31 @@
 import React from 'react';
 import DescriptionEntry from './DescriptionEntry.jsx';
 import MainDescription from './MainDescription.jsx';
+import ReadMoreButton from '../styles/ReadMoreButton.jsx';
 import styled from 'styled-components';
 
-class DescriptionList extends React.Component {
-  constructor(props) {
-    super(props);
+const DescriptionList = (props) => {
+  const descriptions = Object.values(props.descriptions[0]);
 
-    this.state = {
-      isReadMoreClicked: false,
-    };
-
-    this.mainDescription = this.mainDescription.bind(this);
-    this.remainingMapped = this.remainingMapped.bind(this);
-    this.handleNoContent = this.handleNoContent.bind(this);
-  }
-
-  mainDescription() {
-    const main = this.props.descriptions.slice(0, 1);
+  const mainDescription = () => {
+    const main = descriptions.slice(1, 2);
 
     return (
       <div>
         <MainDescription main={main} />
       </div>
     );
-  }
+  };
 
-  remainingMapped() {
-    const remaining = this.props.descriptions.slice(1);
+  const remainingMapped = () => {
+    let remainingStorage = [];
+
+    const remaining = descriptions.filter((element, index) => {
+      return index !== 1;
+    });
+
+    remaining.splice(0, 0, remaining[3]);
+    remaining.splice(4, 1);
 
     return (
       <div>
@@ -36,59 +34,39 @@ class DescriptionList extends React.Component {
         ))}
       </div>
     );
-  }
+  };
 
-  handleReadMoreClicked() {
-    this.setState({ isReadMoreClicked: !this.state.isReadMoreClicked });
-  }
-
-  handleNoContent() {
+  const handleNoContent = () => {
     return (
       <div>
-      </div>
-    )
-  }
-
-  render() {
-    const isReadMoreClicked = this.state.isReadMoreClicked;
-
-    return (
-      <div>
-        <div>
-          {this.mainDescription()}
-        </div>
-        <div>
-          { isReadMoreClicked ? (
-            this.remainingMapped()
-           ) : (
-            this.handleNoContent()
-           )}
-        </div>
-        <div>
-          <ReadMoreButton onClick={() => this.handleReadMoreClicked()}>
-            Read more about the space
-          </ReadMoreButton>
-        </div>
-        <BottomBorderLine>
-          <div>
-          </div>
-        </BottomBorderLine>
       </div>
     );
-  }
-}
+  };
 
-
-const ReadMoreButton = styled.button`
-  background-color: Transparent;
-  border: none;
-  cursor:pointer;
-  font-size: 16px;
-  color: rgb(0, 132, 137);
-  font-weight: 600;
-  font-stretch: 100%
-  margin-left: 0;
-`;
+  return (
+    <div>
+      <div>
+        {mainDescription()}
+      </div>
+        <div>
+          { props.readMoreClicked ? (
+            remainingMapped()
+            ) : (
+            handleNoContent()
+            )}
+        </div>
+      <div>
+        <ReadMoreButton onClick={() => props.handleReadMoreClicked()}>
+          Read more about the space
+        </ReadMoreButton>
+      </div>
+      <BottomBorderLine>
+        <div>
+        </div>
+      </BottomBorderLine>
+    </div>
+  );
+};
 
 const BottomBorderLine = styled.div`
   border-bottom-style: solid;

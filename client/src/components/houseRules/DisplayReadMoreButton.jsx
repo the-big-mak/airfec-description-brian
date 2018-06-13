@@ -1,5 +1,6 @@
 import React from 'react';
 import HiddenRule from './HiddenRule.jsx';
+import ReadMoreButton from '../styles/ReadMoreButton.jsx';
 import styled from 'styled-components';
 
 class DisplayReadMoreButton extends React.Component {
@@ -8,9 +9,12 @@ class DisplayReadMoreButton extends React.Component {
 
     this.state = {
       isReadMoreClicked: false,
+      buttonPhrase: 'Read all rules',
     };
 
+    this.handleReadMoreClicked = this.handleReadMoreClicked.bind(this);
     this.displayHiddenRules = this.displayHiddenRules.bind(this);
+    this.buttonPhrase = this.buttonPhrase.bind(this);
   }
 
   handleReadMoreClicked() {
@@ -34,6 +38,13 @@ class DisplayReadMoreButton extends React.Component {
     )
   }
 
+  buttonPhrase() {
+    const show = 'Read all rules';
+    const hide = 'Hide all rules';
+
+    return this.state.isReadMoreClicked ? (hide) : (show);
+  }
+
   render() {
     const buttonClicked = this.state.isReadMoreClicked;
 
@@ -48,22 +59,12 @@ class DisplayReadMoreButton extends React.Component {
         </div>
         <div>
           <ReadMoreButton onClick={() => this.handleReadMoreClicked()}>
-            Read all rules
+            {this.buttonPhrase()}
           </ReadMoreButton>
         </div>
       </div>
     );
   }
 }
-
-const ReadMoreButton = styled.button`
-  background-color: Transparent;
-  border: none;
-  cursor:pointer;
-  font-size: 16px;
-  color: rgb(0, 132, 137);
-  font-weight: 600;
-  font-stretch: 100%
-`;
 
 export default DisplayReadMoreButton;

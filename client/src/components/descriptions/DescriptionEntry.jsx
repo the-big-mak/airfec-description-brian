@@ -1,59 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
 
-class DescriptionEntry extends React.Component {
-  constructor(props) {
-    super(props);
+const DescriptionEntry = (props) => {
+  let type = '';
 
-    this.state = {
-      type: '',
-      description: '',
-      id: this.props.id,
-    };
+  if (props.id === 0) {
+    type = 'The Space';
+  } else if (props.id === 1) {
+    type = 'Guest Access';
+  } else if (props.id === 2) {
+    type = 'Guest Interactions';
+  } else if (props.id === 3) {
+    type = 'Notes';
   }
 
-  componentDidMount() {
-    const desc = this.props.description;
-
-    if (this.state.id === 0) {
-      this.setState({
-        type: 'The Space',
-        description: desc.space,
-      });
-    } else if (this.state.id === 1) {
-      this.setState({
-        type: 'Guest Access',
-        description: desc.access,
-      });
-    } else if (this.state.id === 2) {
-      this.setState({
-        type: 'Guest Interactions',
-        description: desc.interactions,
-      });
-    } else if (this.state.id === 3) {
-      this.setState({
-        type: 'Notes',
-        description: desc.notes,
-      });
-    }
-  }
-
-  render() {
-    return (
-      <div className={`description-id: ${this.props.id}`}>
-        <Wrapper>
-          <div className="description-type">
-            <b>{this.state.type}</b>
-          </div>
-        </Wrapper>
-        <div className="description">
-          {this.state.description}
+  return (
+    <div className={`description-id: ${props.id}`}>
+      <Wrapper>
+        <div className="description-type">
+          <b>{type}</b>
         </div>
+      </Wrapper>
+      <div className="description">
+        {props.description}
       </div>
-    );
-  }
+    </div>
+  );
 }
-
 const Wrapper = styled.h2` 
   font-size: 16px; 
 `;

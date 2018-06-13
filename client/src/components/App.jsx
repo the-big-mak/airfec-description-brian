@@ -2,20 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import Summary from './summary/Summary.jsx';
 import HighlightsList from './highlights/HighlightsList.jsx';
-import DescriptionList from './descriptions/DescriptionList.jsx';
-import AmenitiesList from './amenities/AmenitiesList.jsx';
+import DescriptionClicked from './descriptions/DescriptionClicked.jsx';
+import AmenitiesState from './amenities/AmenitiesState.jsx';
 import HouseRulesList from './houseRules/HouseRulesList.jsx';
 import styled from 'styled-components';
-
-const Wrapper = styled.div`
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
-  text-size-adjust: 100%;
-  color: rgb(72, 72, 72);
-`;
-
-const TopBottomMargin = styled.div`
-  margin: 24px 0;
-`;
 
 class App extends React.Component {
   constructor(props) {
@@ -27,10 +17,9 @@ class App extends React.Component {
       highlights: window.dummyData[0].highlights,
       amenities: window.dummyData[0].amenities,
       houseRules: window.dummyData[0].houseRules,
-      id: 98,
+      id: 43,
     };
   }
-
 
   componentDidMount() {
     axios.get('/description', {
@@ -39,11 +28,14 @@ class App extends React.Component {
       },
     })
       .then((result) => {
-        const data = result.data;
+        const informationData = result.data;
 
         this.setState({
-          summary: data[1],
-          amenities: data[3],
+          descriptions: informationData[0],
+          summary: informationData[1],
+          highlights: informationData[2],
+         amenities: informationData[3],
+         houseRules: informationData[4],
         });
       })
       .catch((error) => {
@@ -69,12 +61,12 @@ class App extends React.Component {
             </div>
             <div className="descriptions-list">
               <TopBottomMargin>
-                <DescriptionList descriptions={this.state.descriptions} />
+                <DescriptionClicked descriptions={this.state.descriptions} />
               </TopBottomMargin>
             </div>
             <div className="amenities-list">
               <TopBottomMargin>
-                <AmenitiesList amenities={this.state.amenities} />
+                <AmenitiesState amenities={this.state.amenities} />
               </TopBottomMargin>
             </div>
             <div className="house-rules-list">
@@ -88,5 +80,16 @@ class App extends React.Component {
     );
   }
 }
+
+const Wrapper = styled.div`
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  text-size-adjust: 100%;
+  color: rgb(72, 72, 72);
+  margin: 10% 45% 0 10%;
+`;
+
+const TopBottomMargin = styled.div`
+  margin: 24px 0;
+`;
 
 export default App;
