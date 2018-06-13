@@ -96,8 +96,8 @@ const Wrapper = styled.div`
 `;
 // margin: 10% 45% 0 10%;
 
-// const TopBottomMargin = styled.div`
-//   margin: 24px 0;
-// `;
+const TopBottomMargin = styled.div`
+  margin: 24px 0;
+`;
 
 export default Overview;
