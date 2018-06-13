@@ -2,52 +2,35 @@ import React from 'react';
 import styled from 'styled-components';
 import Helpful from './buttonList/ButtonList.jsx';
 
-class HighlightEntry extends React.Component {
-  constructor(props) {
-    super(props);
+const HighlightEntry = (props) => {
+  let desc = '';
+  let text = '';
 
-    this.state = {
-      id: this.props.id,
-      desc: '',
-      highlight: '',
-      text: '',
-    };
+  if (props.id === 0 ) {
+    desc = 'Sparkling Clean';
+    text = ' recent guests have said that this home was sparkling clean.' ;
+  } else if (props.id === 1) {
+    desc = 'Check-in Experience';
+    text = '% of guests gave this home\'s check-in process a 5-star rating';
+  } else if (props.id === 2) {
+    desc = 'Great Location';
+    text = '% of recent guests gave this home’s location a 5-star rating.'
   }
 
-  componentDidMount() {
-    const highlights = this.props.highlight;
-
-    if (this.state.id === 0) {
-      this.setState({ desc: 'Sparkling Clean' });
-      this.setState({ highlight: highlights.sparklingClean });
-      this.setState({ text: ' recent guests have said that this home was sparkling clean.' });
-    } else if (this.state.id === 1) {
-      this.setState({ desc: 'Check-in Experience' });
-      this.setState({ highlight: highlights.checkinExp });
-      this.setState({ text: '% of guests gave this home\'s check-in process a 5-star rating' });
-    } else if (this.state.id === 2) {
-      this.setState({ desc: 'Great Location' });
-      this.setState({ highlight: highlights.greatLocation });
-      this.setState({ text: '% of recent guests gave this home’s location a 5-star rating.' });
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        <OuterWrapper>
-          <div className={`highlight-id: ${this.state.id}`}>
-            <InnerWrapper>
-              <span><b>{this.state.desc}</b></span> &middot; {' '}
-              <span>{this.state.highlight}</span>
-              <span>{this.state.text}</span>
-              <Helpful />
-            </InnerWrapper>
-          </div>
-        </OuterWrapper>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <OuterWrapper>
+        <div className={`highlight-id: ${props.id}`}>
+          <InnerWrapper>
+            <span><b>{desc}</b></span> &middot; {' '}
+            <span>{props.highlight}</span>
+            <span>{text}</span>
+            <Helpful />
+          </InnerWrapper>
+        </div>
+      </OuterWrapper>
+    </div>
+  );
 }
 
 const OuterWrapper = styled.div`

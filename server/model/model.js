@@ -18,7 +18,7 @@ module.exports = {
 
   getSummary: (params, callback) => {
     const summaryParams = [params.id];
-    const q = `SELECT property_type AS propertyType, guests, beds, bedrooms, bath
+    const q = `SELECT property_type AS propertyType, title, guests, beds, bedrooms, bath
       FROM descriptions
       WHERE id = ?;`;
 

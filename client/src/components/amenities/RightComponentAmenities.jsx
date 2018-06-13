@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Amenity = props => (
+const RightComponentAmenities = props => (
   <div className="amenity">
     {props.amenity}
   </div>
 );
 
 
-export default Amenity;
+export default RightComponentAmenities;
