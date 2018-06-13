@@ -5,26 +5,28 @@ import HighlightsList from './highlights/HighlightsList.jsx';
 import DescriptionClicked from './descriptions/DescriptionClicked.jsx';
 import AmenitiesState from './amenities/AmenitiesState.jsx';
 import HouseRulesList from './houseRules/HouseRulesList.jsx';
+import RenderNoContent from './RenderNoContent.jsx';
 import styled from 'styled-components';
 
-class App extends React.Component {
+class Overview extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      summary: window.dummyData[0].summary,
-      descriptions: window.dummyData[0].descriptions,
-      highlights: window.dummyData[0].highlights,
-      amenities: window.dummyData[0].amenities,
-      houseRules: window.dummyData[0].houseRules,
-      id: 43,
+      summary: [],
+      descriptions: [],
+      highlights: [],
+      amenities: [],
+      houseRules: [],
+      finalRender: false,
     };
   }
 
   componentDidMount() {
+    const roomId = window.location.pathname.slice(6, window.location.pathname.length - 1);
     axios.get('/description', {
       params: {
-        id: this.state.id,
+        id: roomId,
       },
     })
       .then((result) => {
@@ -34,8 +36,9 @@ class App extends React.Component {
           descriptions: informationData[0],
           summary: informationData[1],
           highlights: informationData[2],
-         amenities: informationData[3],
-         houseRules: informationData[4],
+          amenities: informationData[3],
+          houseRules: informationData[4],
+          finalRender: true,
         });
       })
       .catch((error) => {
@@ -43,9 +46,13 @@ class App extends React.Component {
       });
   }
 
-
   render() {
+    const render = this.state.finalRender;
+
     return (
+      !render ? (
+        <RenderNoContent/>
+      ) : (
       <div>
         <Wrapper>
           <div>
@@ -77,6 +84,7 @@ class App extends React.Component {
           </div>
         </Wrapper>
       </div>
+      )
     );
   }
 }
@@ -85,11 +93,11 @@ const Wrapper = styled.div`
   font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
   text-size-adjust: 100%;
   color: rgb(72, 72, 72);
-  margin: 10% 45% 0 10%;
 `;
+// margin: 10% 45% 0 10%;
 
-const TopBottomMargin = styled.div`
-  margin: 24px 0;
-`;
+// const TopBottomMargin = styled.div`
+//   margin: 24px 0;
+// `;
 
-export default App;
+export default Overview;

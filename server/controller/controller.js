@@ -4,12 +4,12 @@ const path = require('path');
 const model = require('../model/model.js');
 
 const app = express();
-const PORT = 3000;
+const PORT = 3002;
 
 
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, '../../client')));
+app.use('/room/:id', express.static(path.join(__dirname, '../../client')));
 
 
 app.get('/description', (req, res) => {

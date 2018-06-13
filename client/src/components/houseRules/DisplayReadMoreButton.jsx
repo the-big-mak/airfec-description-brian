@@ -1,6 +1,7 @@
 import React from 'react';
 import HiddenRule from './HiddenRule.jsx';
 import ReadMoreButton from '../styles/ReadMoreButton.jsx';
+import RenderNoContent from '../RenderNoContent.jsx';
 import styled from 'styled-components';
 
 class DisplayReadMoreButton extends React.Component {
@@ -31,13 +32,6 @@ class DisplayReadMoreButton extends React.Component {
     );
   }
 
-  displayNoContent() {
-    return (
-      <div>
-      </div>
-    )
-  }
-
   buttonPhrase() {
     const show = 'Read all rules';
     const hide = 'Hide all rules';
@@ -54,7 +48,7 @@ class DisplayReadMoreButton extends React.Component {
           {buttonClicked ? (
             this.displayHiddenRules()
           ) : (
-            this.displayNoContent()
+            <RenderNoContent />
           )}
         </div>
         <div>

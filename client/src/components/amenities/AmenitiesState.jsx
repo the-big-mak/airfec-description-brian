@@ -1,5 +1,6 @@
 import React from 'react';
 import AmenitiesList from './AmenitiesList.jsx';
+import RenderNoContent from '../RenderNoContent.jsx';
 import styled from 'styled-components';
 
 class AmenitiesState extends React.Component {
@@ -8,6 +9,7 @@ class AmenitiesState extends React.Component {
 
     this.state = {
       showAmenities: false,
+      amenitiesLength: this.props.amenities.length,
     };
 
     this.handleShowAmenities = this.handleShowAmenities.bind(this);
@@ -21,6 +23,9 @@ class AmenitiesState extends React.Component {
 
   render() {
     return (
+      this.state.amenitiesLength === 0 ? (
+        <RenderNoContent/>
+      ) : (
       <div>
         <AmenitiesList
         amenities={this.props.amenities}
@@ -28,6 +33,7 @@ class AmenitiesState extends React.Component {
         showAmenities={this.state.showAmenities}
         />
       </div>
+      )
     );
   }
 }
