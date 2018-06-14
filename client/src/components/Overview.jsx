@@ -23,7 +23,8 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    const roomId = window.location.pathname.slice(6, window.location.pathname.length - 1);
+    const roomId = window.location.pathname.slice(7, window.location.pathname.length - 1);
+    console.log(roomId);
     axios.get('/description', {
       params: {
         id: roomId,

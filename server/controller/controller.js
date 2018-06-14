@@ -9,7 +9,7 @@ const PORT = 3002;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/room/:id', express.static(path.join(__dirname, '../../client')));
+app.use('/rooms/:id', express.static(path.join(__dirname, '../../client')));
 
 
 app.get('/description', (req, res) => {

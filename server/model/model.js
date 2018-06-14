@@ -3,6 +3,7 @@ const db = require('../db/db.js');
 module.exports = {
   getDesc: (params, callback) => {
     const descriptionParams = [params.id];
+    console.log(params.id);
     const q = `SELECT descriptions, space, access, interactions, notes
       FROM descriptions
       WHERE id = ?;`;
