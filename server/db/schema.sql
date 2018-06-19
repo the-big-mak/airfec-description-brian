@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS airfec;
+DROP DATABASE IF EXISTS briansai;
 
-CREATE DATABASE airfec;
+CREATE DATABASE briansai;
 
-USE airfec;
+USE briansai;
 
 CREATE TABLE descriptions (
   id INT NOT NULL AUTO_INCREMENT,

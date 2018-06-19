@@ -3,14 +3,14 @@ const db = require('../db/db.js');
 module.exports = {
   getDesc: (params, callback) => {
     const descriptionParams = [params.id];
-    console.log(params.id);
+
     const q = `SELECT descriptions, space, access, interactions, notes
       FROM descriptions
       WHERE id = ?;`;
 
     db.con.query(q, descriptionParams, (err, result) => {
       if (err) {
-        callback(err);
+        callback(err, null);
       } else {
         callback(null, result);
       }
@@ -25,7 +25,7 @@ module.exports = {
 
     db.con.query(q, summaryParams, (err, result) => {
       if (err) {
-        callback(err);
+        callback(err, null);
       } else {
         callback(null, result);
       }
@@ -57,7 +57,7 @@ module.exports = {
 
     db.con.query(q, amenitiesParams, (err, result) => {
       if (err) {
-        callback(err);
+        callback(err, null);
       } else {
         callback(null, result);
       }
@@ -74,24 +74,10 @@ module.exports = {
 
     db.con.query(q, rulesParams, (err, result) => {
       if (err) {
-        callback(err);
+        callback(err, null);
       } else {
         callback(null, result);
       }
     });
   },
 };
-
-// const q = `SELECT DISTINCT d.descriptions, d.space, d.access, d.interactions, d.notes, d.reg_number, d.property_type, d.guests, d.bedrooms, d.bath, d.sparkling_clean, d.checkin_exp, d.great_location, b.amenities, c.house_rules 
-// FROM descriptions d 
-//   LEFT JOIN (SELECT da.description_id, a.amenities 
-//   FROM description_to_amenities da 
-//   INNER JOIN amenities a 
-//     ON da.amenities_id = a.id) AS b
-//   ON d.id = b.description_id
-//   LEFT JOIN (SELECT dhr.description_id, hr.house_rules
-//   FROM description_to_house_rules dhr
-//   INNER JOIN house_rules hr
-//     ON dhr.house_rules_id = hr.id) AS c
-//   ON d.id = c.description_id  
-//   WHERE d.id = ?;`;
